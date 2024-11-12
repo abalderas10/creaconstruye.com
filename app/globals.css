@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 226, 232, 240;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 23, 36, 64;
+  --accent-blue: 56, 189, 248;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  min-height: 100vh;
+}
+
+.chat-container {
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  backdrop-filter: blur(12px);
+}
+
+.chat-container.open {
+  transform: translateY(0);
+}
+
+/* Metallic effect classes */
+.metallic-dark {
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.metallic-border {
+  border: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.2) rgba(15, 23, 42, 0.5);
+  padding-bottom: 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 4px;
+  border: 2px solid rgba(15, 23, 42, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+/* Timeline animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.timeline-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Metallic glow effects */
+.metallic-glow {
+  position: relative;
+}
+
+.metallic-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 
+    0 0 15px rgba(56, 189, 248, 0.1),
+    0 0 30px rgba(56, 189, 248, 0.05);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metallic-glow:hover::after {
+  opacity: 1;
+}
